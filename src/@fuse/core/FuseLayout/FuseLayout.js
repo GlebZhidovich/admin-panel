@@ -74,7 +74,7 @@ function FuseLayout(props) {
 	const dispatch = useDispatch();
 	const settings = useSelector(({ fuse }) => fuse.settings.current);
 	const defaultSettings = useSelector(({ fuse }) => fuse.settings.defaults);
-
+	console.log(settings)
 	const appContext = useContext(AppContext);
 	const { routes } = appContext;
 	const classes = useStyles(props);
@@ -136,7 +136,6 @@ function FuseLayout(props) {
 	}, [dispatch, newSettings.current, settings]);
 
 	// console.warn('::FuseLayout:: rendered');
-
 	const Layout = useMemo(() => FuseLayouts[settings.layout.style], [settings.layout.style]);
 
 	return _.isEqual(newSettings.current, settings) ? <Layout classes={{ root: classes.root }} {...props} /> : null;
