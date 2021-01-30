@@ -194,6 +194,8 @@ const FusePageSimple = React.forwardRef((props, ref) => {
 						{props.contentToolbar && <div className={classes.toolbar}>{props.contentToolbar}</div>}
 
 						{props.content && <div className={classes.content}>{props.content}</div>}
+
+						{props.footer && <footer className="flex justify-center items-center p-24 bg-blue-400 text-white">{props.footer}</footer>}
 					</FuseScrollbars>
 					{/* </FuseScrollbars> */}
 
@@ -212,6 +214,7 @@ const FusePageSimple = React.forwardRef((props, ref) => {
 					)}
 				</div>
 			</div>
+
 		</div>
 	);
 });
@@ -224,6 +227,7 @@ FusePageSimple.propTypes = {
 	rightSidebarContent: PropTypes.node,
 	rightSidebarVariant: PropTypes.node,
 	header: PropTypes.node,
+	footer: PropTypes.node,
 	content: PropTypes.node,
 	contentToolbar: PropTypes.node,
 	sidebarInner: PropTypes.bool,

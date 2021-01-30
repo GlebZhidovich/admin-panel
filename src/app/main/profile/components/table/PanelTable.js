@@ -17,12 +17,18 @@ const columns = [
         label: 'Дата начала диагностики',
         minWidth: 170,
         align: 'right',
+        format(val) {
+            return new Date(val).toLocaleString('ru');
+        }
     },
     {
         id: 'time',
         label: 'Ожидаемое время окончания диагностики',
         minWidth: 170,
         align: 'right',
+        format(val) {
+            return new Date(val).toLocaleString('ru');
+        }
     },
     {
         id: 'limit',
@@ -57,7 +63,7 @@ const columns = [
 ];
 
 function createData(id, expert, date, time, limit, governumber, vin, category, photo) {
-    // const formatDate = new Date(date).toLocaleString('ru');
+    const formatDate = new Date(date).toLocaleString('ru');
     // const formatTime = new Date(time).toLocaleString('ru');
     return { id, expert, date, time, limit, governumber, vin, category, photo };
 }

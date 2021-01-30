@@ -5,9 +5,7 @@ import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import React, { useState } from 'react';
 import ExpertsTab from './tabs/ExpertsTab';
-import Typography from "@material-ui/core/Typography";
-import PanelTable from "./components/table/PanelTable";
-import FuseScrollbars from "../../../@fuse/core/FuseScrollbars";
+import FuseAnimateGroup from "../../../@fuse/core/FuseAnimateGroup/FuseAnimateGroup";
 
 const useStyles = makeStyles(theme => ({
     layout: {
@@ -34,38 +32,41 @@ function PanelPage() {
     ]
 
     return (
-            <FusePageSimple
-                contentToolbar={
-                    <Tabs
-                        value={selectedTab}
-                        onChange={handleTabChange}
-                        indicatorColor="primary"
-                        textColor="inherit"
-                        variant="scrollable"
-                        scrollButtons="off"
-                        className="w-full px-24 -mx-4 min-h-40"
-                        classes={{ indicator: 'flex justify-center bg-transparent w-full h-full' }}
-                        TabIndicatorProps={{
-                            children: <Divider className="w-full h-full rounded-full opacity-50"/>
-                        }}
-                    >
-                        {tabs.map(tab => <Tab
-                            key={tab}
-                            className="text-14 font-bold min-h-40 min-w-64 mx-4"
-                            disableRipple
-                            label={tab}/>)}
-                    </Tabs>
-                }
-                content={
-                    <div className={'p-16 sm:p-24 ' + classes.layout}>
-                        <ExpertsTab/>
-                        <PanelTable/>
-
-                    </div>
-                }
-            />
-
-
+        <FusePageSimple
+            contentToolbar={
+                <Tabs
+                    value={selectedTab}
+                    onChange={handleTabChange}
+                    indicatorColor="primary"
+                    textColor="inherit"
+                    variant="scrollable"
+                    scrollButtons="off"
+                    className="w-full px-24 -mx-4 min-h-40"
+                    classes={{ indicator: 'flex justify-center bg-transparent w-full h-full' }}
+                    TabIndicatorProps={{
+                        children: <Divider className="w-full h-full rounded-full opacity-50"/>
+                    }}
+                >
+                    {tabs.map(tab => <Tab
+                        key={tab}
+                        className="text-14 font-bold min-h-40 min-w-64 mx-4"
+                        disableRipple
+                        label={tab}/>)}
+                </Tabs>
+            }
+            content={
+                    <FuseAnimateGroup>
+                        <div className={'p-16 sm:p-24 ' + classes.layout}>
+                            <ExpertsTab/>
+                        </div>
+                    </FuseAnimateGroup>
+            }
+            footer={
+                <div className="">
+                    (C) Система - 2021
+                </div>
+            }
+        />
     );
 }
 
