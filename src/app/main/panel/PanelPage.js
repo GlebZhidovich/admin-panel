@@ -4,10 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import React, { useState } from 'react';
-import { ExpertsTab } from './tabs/ExpertsTab';
 import FuseAnimateGroup from "../../../@fuse/core/FuseAnimateGroup/FuseAnimateGroup";
-import { ProfileTab } from "./tabs/ProfileTab";
-import { OperatorTab } from "./tabs/OperatorTab";
+import { ExpertsTab, ProfileTab, OperatorTab, PunktTab } from './tabs';
 
 const useStyles = makeStyles(theme => ({
     layout: {
@@ -59,13 +57,14 @@ function PanelPage() {
                 </Tabs>
             }
             content={
-                    <FuseAnimateGroup>
-                        <div className={'p-16 sm:p-24 ' + classes.layout}>
-                            {selectedTab === 2 && <ExpertsTab/>}
-                            {selectedTab === 1 && <OperatorTab/>}
-                            {selectedTab === 7 && <ProfileTab/>}
-                        </div>
-                    </FuseAnimateGroup>
+                <FuseAnimateGroup>
+                    <div className={'p-16 sm:p-24 ' + classes.layout}>
+                        {selectedTab === 1 && <OperatorTab/>}
+                        {selectedTab === 2 && <ExpertsTab/>}
+                        {selectedTab === 3 && <PunktTab/>}
+                        {selectedTab === 7 && <ProfileTab/>}
+                    </div>
+                </FuseAnimateGroup>
             }
             footer={
                 <div className="">
