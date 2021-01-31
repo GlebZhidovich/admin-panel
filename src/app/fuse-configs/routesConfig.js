@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import FuseUtils from '@fuse/utils';
 import LoginConfig from "../main/login/LoginPageConfig";
-import PanelPageConfig from "../main/profile/PanelPageConfig";
+import PanelPageConfig from "../main/panel/PanelPageConfig";
 
 const routeConfigs = [LoginConfig, PanelPageConfig];
 

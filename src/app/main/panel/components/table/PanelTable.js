@@ -90,8 +90,9 @@ const useStyles = makeStyles({
     },
 });
 
-export default function PanelTable() {
+export default function PanelTable(props) {
     const classes = useStyles();
+    const {cbEdit} = props;
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -103,6 +104,10 @@ export default function PanelTable() {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
+
+    const handleClick = () => {
+        cbEdit(true);
+    }
 
     return (
         <Paper className={classes.root}>
@@ -124,7 +129,12 @@ export default function PanelTable() {
                     <TableBody>
                         {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                             return (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                                <TableRow
+                                    onClick={handleClick}
+                                    hover
+                                    role="checkbox"
+                                    tabIndex={-1}
+                                    key={row.id}>
                                     {columns.map((column) => {
                                         const value = row[column.id];
                                         return (

@@ -11,7 +11,8 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export function ExpertsCurrent() {
+export function ExpertsCurrent(props) {
+    const {cbEdit} = props;
     const classes = useStyles();
 
     const title = 'Текущее состояние операторов ТО';
@@ -49,7 +50,7 @@ export function ExpertsCurrent() {
 
             </List>
 
-            <PanelTable/>
+            <PanelTable cbEdit={cbEdit}/>
         </div>
     )
 }

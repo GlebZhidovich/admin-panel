@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { Card, Checkbox, FormControlLabel, InputLabel, MenuItem, Select, TextField } from "@material-ui/core";
+import { Checkbox, FormControlLabel, InputLabel, MenuItem, Select, TextField } from "@material-ui/core";
 import Badge from "@material-ui/core/Badge";
 import DoneIcon from '@material-ui/icons/Done';
 import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
-import CardMedia from "@material-ui/core/CardMedia";
 
 const useStyles = makeStyles({
     root: {
@@ -32,7 +31,8 @@ const useStyles = makeStyles({
     }
 });
 
-export function ExpertsEdit() {
+export const ExpertsEdit = function (props) {
+    const {cbEdit} = props;
     const title = 'Эксперт - Иванов Иван Иванович';
     const classes = useStyles();
     const credentialInputs = ['Иванов', 'Иван', 'Иванович'];
@@ -40,7 +40,7 @@ export function ExpertsEdit() {
     const [certificate, setCertificate] = useState('');
     const [isChecked, setChecked] = useState(true);
 
-    const handleCehecked = (event) => {
+    const handleChecked = (event) => {
         const { checked } = event.target;
         setChecked(checked);
     };
@@ -49,6 +49,10 @@ export function ExpertsEdit() {
         const { value } = event.target;
         setCertificate(value);
     };
+
+    const handleClick = () => {
+        cbEdit(false);
+    }
 
     return <div className={classes.credential}>
         <Typography className="pb-12" variant="h4">{title}</Typography>
@@ -111,7 +115,7 @@ export function ExpertsEdit() {
                     control={
                         <Checkbox
                             checked={isChecked}
-                            onChange={handleCehecked}
+                            onChange={handleChecked}
                             name="checked"
                             color="secondary"
                         />
@@ -185,5 +189,14 @@ export function ExpertsEdit() {
         <div className="p-16">
             <img src="/assets/images/settings.jpg" alt="settings"/>
         </div>
+
+        <div>
+            <Button
+                onClick={handleClick}
+                className="p-16 text-white"
+                    color="secondary"
+                    variant="contained">
+                Сохранить</Button>
+        </div>
     </div>
-}
+};
