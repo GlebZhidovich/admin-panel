@@ -4,9 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import React, { useState } from 'react';
-import ExpertsTab from './tabs/ExpertsTab';
+import { ExpertsTab } from './tabs/ExpertsTab';
 import FuseAnimateGroup from "../../../@fuse/core/FuseAnimateGroup/FuseAnimateGroup";
-import ProfileTab from "./tabs/ProfileTab";
+import { ProfileTab } from "./tabs/ProfileTab";
+import { OperatorTab } from "./tabs/OperatorTab";
 
 const useStyles = makeStyles(theme => ({
     layout: {
@@ -19,6 +20,7 @@ function PanelPage() {
     const [selectedTab, setSelectedTab] = useState(0);
 
     function handleTabChange(event, value) {
+        console.log(value)
         setSelectedTab(value);
     }
 
@@ -59,8 +61,9 @@ function PanelPage() {
             content={
                     <FuseAnimateGroup>
                         <div className={'p-16 sm:p-24 ' + classes.layout}>
-                            {/*<ExpertsTab/>*/}
-                            <ProfileTab/>
+                            {selectedTab === 2 && <ExpertsTab/>}
+                            {selectedTab === 1 && <OperatorTab/>}
+                            {selectedTab === 7 && <ProfileTab/>}
                         </div>
                     </FuseAnimateGroup>
             }

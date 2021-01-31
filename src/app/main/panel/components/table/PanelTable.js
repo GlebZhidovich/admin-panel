@@ -92,7 +92,6 @@ const useStyles = makeStyles({
 
 export default function PanelTable(props) {
     const classes = useStyles();
-    const {cbEdit} = props;
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -106,7 +105,6 @@ export default function PanelTable(props) {
     };
 
     const handleClick = () => {
-        cbEdit(true);
     }
 
     return (

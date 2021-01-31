@@ -3,7 +3,6 @@ import { AppBar } from "@material-ui/core";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { Field } from "./Field";
 
@@ -20,7 +19,7 @@ function TabPanel(props) {
         >
             {value === index && (
                 <Box p={3}>
-                    <Typography>{children}</Typography>
+                    <div>{children}</div>
                 </Box>
             )}
         </div>
