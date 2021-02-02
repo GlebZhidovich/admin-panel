@@ -1,13 +1,24 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { Card, InputBase, InputLabel, makeStyles, MenuItem, Paper, Select, TextField } from "@material-ui/core";
+import {
+    Card,
+    Checkbox, FormControlLabel,
+    InputBase,
+    InputLabel,
+    makeStyles,
+    MenuItem,
+    Paper, Radio, RadioGroup,
+    Select,
+    TextField
+} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import clsx from "clsx";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import Divider from "@material-ui/core/Divider";
 import FormControl from "@material-ui/core/FormControl";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -189,6 +200,9 @@ export function CreateMap() {
                                 VIN
                             </Typography>
                             <TextField label="012345678901234567" variant="outlined"/>
+                            <Box>
+                                <FormControlLabel control={<Checkbox/>} label="Отсутствует"/>
+                            </Box>
                         </Grid>
                         <Grid item xs={3}>
                             <Typography className="font-bold" variant="body1">
@@ -197,10 +211,10 @@ export function CreateMap() {
                             <FormControl
                                 variant="outlined"
                                 className={classes.formControl}>
-                                <InputLabel id="select-label">Age</InputLabel>
+                                <InputLabel id="select-label">autocomplete</InputLabel>
                                 <Select
                                     labelId="select-label"
-                                    label="Age">
+                                    label="autocomplete">
                                     <MenuItem value="">
                                         <em>None</em>
                                     </MenuItem>
@@ -217,20 +231,292 @@ export function CreateMap() {
                             <TextField label="А777АА777" variant="outlined"/>
                         </Grid>
                     </Grid>
+
                     <Grid item container>
                         <Grid item xs={3}>
                             <Typography className="font-bold" variant="body1">
-                                Email для отправки карты
+                                Категория ТС (ОКП)
                             </Typography>
-                            <TextField label="ivan@ivan.com" variant="outlined"/>
+                            <FormControl
+                                variant="outlined"
+                                className={classes.formControl}>
+                                <InputLabel id="select-label">autocomplete</InputLabel>
+                                <Select
+                                    labelId="select-label"
+                                    label="autocomplete">
+                                    <MenuItem value="">
+                                        <em>None</em>
+                                    </MenuItem>
+                                    <MenuItem value={10}>Ten</MenuItem>
+                                    <MenuItem value={20}>Twenty</MenuItem>
+                                    <MenuItem value={30}>Thirty</MenuItem>
+                                </Select>
+                            </FormControl>
                         </Grid>
                         <Grid item xs={3}>
                             <Typography className="font-bold" variant="body1">
-                                Телефон
+                                Год выпуска ТС
                             </Typography>
-                            <TextField label="+79991234567" variant="outlined"/>
+                            <TextField label="2020" variant="outlined"/>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Шасси (Рама) №
+                            </Typography>
+                            <TextField label="" variant="outlined"/>
+                            <Box>
+                                <FormControlLabel control={<Checkbox/>} label="Отсутствует"/>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Кузов №
+                            </Typography>
+                            <TextField label="" variant="outlined"/>
+                            <Box>
+                                <FormControlLabel control={<Checkbox/>} label="Отсутствует"/>
+                            </Box>
                         </Grid>
                     </Grid>
+
+                    <Grid item container>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Разрешенная макс. масса (кг) *
+                            </Typography>
+                            <TextField label="1500" variant="outlined"/>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Масса без нагрузки (кг) *
+                            </Typography>
+                            <TextField label="1000" variant="outlined"/>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Тип топлива:
+                            </Typography>
+                            <FormControl
+                                variant="outlined"
+                                className={classes.formControl}>
+                                <InputLabel id="select-label">Бензин</InputLabel>
+                                <Select
+                                    labelId="select-label"
+                                    label="Бензин">
+                                    <MenuItem value="">
+                                        <em>None</em>
+                                    </MenuItem>
+                                    <MenuItem value={10}>Ten</MenuItem>
+                                    <MenuItem value={20}>Twenty</MenuItem>
+                                    <MenuItem value={30}>Thirty</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Тип тормозной системы:
+                            </Typography>
+                            <FormControl
+                                variant="outlined"
+                                className={classes.formControl}>
+                                <InputLabel id="select-label">Гидравлическая</InputLabel>
+                                <Select
+                                    labelId="select-label"
+                                    label="Гидравлическая">
+                                    <MenuItem value="">
+                                        <em>None</em>
+                                    </MenuItem>
+                                    <MenuItem value={10}>Ten</MenuItem>
+                                    <MenuItem value={20}>Twenty</MenuItem>
+                                    <MenuItem value={30}>Thirty</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                    </Grid>
+
+                    <Grid item container>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Регистрационный документ
+                            </Typography>
+                            <RadioGroup name="document">
+                                <FormControlLabel value="female" control={<Radio/>} label="СРТС"/>
+                                <FormControlLabel value="male" control={<Radio/>} label="ПТС"/>
+                                <FormControlLabel value="other" control={<Radio/>} label="ЭПТС"/>
+                            </RadioGroup>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Серия *
+                            </Typography>
+                            <TextField label="" variant="outlined"/>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Номер *
+                            </Typography>
+                            <TextField label="" variant="outlined"/>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Выдан когда *
+                            </Typography>
+                            <TextField label="25.11.1996" variant="outlined"/>
+                        </Grid>
+                    </Grid>
+
+                    <Grid item container>
+                        <Grid d item xs={3}></Grid>
+                        <Grid item container direction="column" xs={6}>
+                            <Typography className="font-bold" variant="body1">
+                                Выдан кем *
+                            </Typography>
+                            <TextField label="" variant="outlined"/>
+                        </Grid>
+                    </Grid>
+
+                    <Grid item container>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Цель использования
+                            </Typography>
+                            <FormControl
+                                variant="outlined"
+                                className={classes.formControl}>
+                                <InputLabel id="select-label">Личная</InputLabel>
+                                <Select
+                                    labelId="select-label"
+                                    label="Личная">
+                                    <MenuItem value="">
+                                        <em>None</em>
+                                    </MenuItem>
+                                    <MenuItem value={10}>Ten</MenuItem>
+                                    <MenuItem value={20}>Twenty</MenuItem>
+                                    <MenuItem value={30}>Thirty</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Марка шин:
+                            </Typography>
+                            <FormControl
+                                variant="outlined"
+                                className={classes.formControl}>
+                                <InputLabel id="select-label">autocomplete</InputLabel>
+                                <Select
+                                    labelId="select-label"
+                                    label="autocomplete">
+                                    <MenuItem value="">
+                                        <em>None</em>
+                                    </MenuItem>
+                                    <MenuItem value={10}>Ten</MenuItem>
+                                    <MenuItem value={20}>Twenty</MenuItem>
+                                    <MenuItem value={30}>Thirty</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Пробег ТС (км) *
+                            </Typography>
+                            <TextField label="150000" variant="outlined"/>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Действует до:
+                            </Typography>
+                            <TextField label="" variant="outlined"/>
+                        </Grid>
+                    </Grid>
+
+                    <Grid item container>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Наличие тахографа
+                            </Typography>
+                            <Box>
+                                <FormControlLabel control={<Checkbox/>} label="В наличии"/>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Марка тахографа
+                            </Typography>
+                            <TextField label="150000" variant="outlined"/>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Модель тахографа
+                            </Typography>
+                            <TextField label="" variant="outlined"/>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Серийный номер тахографа
+                            </Typography>
+                            <TextField label="" variant="outlined"/>
+                        </Grid>
+                    </Grid>
+
+                    <Grid item container>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Газобалонное оборудование
+                            </Typography>
+                            <Box>
+                                <FormControlLabel control={<Checkbox/>} label="В наличии"/>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Номер балона
+                            </Typography>
+                            <TextField label="" variant="outlined"/>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Дата поверки балона
+                            </Typography>
+                            <TextField label="" variant="outlined"/>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography className="font-bold" variant="body1">
+                                Дата поверки оборудования
+                            </Typography>
+                            <TextField label="" variant="outlined"/>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={9} container direction="column">
+                        <Typography className="font-bold" variant="body1">
+                            Примечание
+                        </Typography>
+                        <TextField
+                            multiline
+                            rows={5}
+                            variant="outlined"
+                        />
+                    </Grid>
+
+                    <Grid item container justify="center">
+                        <Typography className="font-bold" variant="h5">
+                            Заключение о соответствии или несоответствии транспортного средства обязательным требованиям
+                            безопасности транспортных средств
+                        </Typography>
+                    </Grid>
+
+                    <Grid item container justify="center">
+                        <Button variant="contained" className="bg-green-500">
+                            Соответствует
+                        </Button>
+                    </Grid>
+
+                    <Grid item container justify="flex-end">
+                        <Button variant="contained" color="primary">
+                            Сохранить ДК
+                        </Button>
+                    </Grid>
+
                 </Grid>
 
 
