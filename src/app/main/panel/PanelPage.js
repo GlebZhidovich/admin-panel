@@ -6,6 +6,8 @@ import Tabs from '@material-ui/core/Tabs';
 import React, { useState } from 'react';
 import FuseAnimateGroup from "../../../@fuse/core/FuseAnimateGroup/FuseAnimateGroup";
 import { ExpertsTab, ProfileTab, OperatorTab, PunktTab } from './tabs';
+import { CreateMap } from "./components/CreateMap/CreateMap";
+import { Statistics } from "./components/Statistics/Statistics";
 
 const useStyles = makeStyles(theme => ({
     layout: {
@@ -59,10 +61,11 @@ function PanelPage() {
             content={
                 <FuseAnimateGroup>
                     <div className={'p-16 sm:p-24 ' + classes.layout}>
-                        {selectedTab === 1 && <OperatorTab/>}
-                        {selectedTab === 2 && <ExpertsTab/>}
-                        {selectedTab === 3 && <PunktTab/>}
-                        {selectedTab === 7 && <ProfileTab/>}
+                        {/*{selectedTab === 1 && <OperatorTab/>}*/}
+                        {/*{selectedTab === 2 && <ExpertsTab/>}*/}
+                        {/*{selectedTab === 3 && <PunktTab/>}*/}
+                        {/*{selectedTab === 7 && <ProfileTab/>}*/}
+                        <Statistics/>
                     </div>
                 </FuseAnimateGroup>
             }

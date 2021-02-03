@@ -1,5 +1,4 @@
 import FuseAnimate from '@fuse/core/FuseAnimate';
-import { useForm } from '@fuse/hooks';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -11,9 +10,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import { darken } from '@material-ui/core/styles/colorManipulator';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import * as yup from 'yup';
 import clsx from 'clsx';
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { useFormik } from "formik";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -22,26 +23,35 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
+const validationSchema = yup.object({
+	email: yup
+		.string('Enter your email')
+		.email('Enter a valid email')
+		.required('Email is required'),
+	password: yup
+		.string('Enter your password')
+		.min(8, 'Password should be of minimum 8 characters length')
+		.required('Password is required'),
+});
+
 function LoginPage() {
 	const history = useHistory();
 	const classes = useStyles();
 
-	const { form, handleChange, resetForm } = useForm({
-		email: '',
-		password: '',
-		remember: true
+	const formik = useFormik({
+		initialValues: {
+			email: 'foobar@example.com',
+			password: 'foobar',
+			remember: false
+		},
+		validationSchema: validationSchema,
+		onSubmit: (values) => {
+			console.log(JSON.stringify(values, null, 2));
+			formik.resetForm();
+			// 	history.push('/panel');
+			// 	resetForm();
+		},
 	});
-
-	function isFormValid() {
-		return form.email.length > 0 && form.password.length > 0;
-	}
-
-	function handleSubmit(ev) {
-		ev.preventDefault();
-		console.log('login');
-		history.push('/panel');
-		resetForm();
-	}
 
 	return (
 		<div className={clsx(classes.root, 'flex flex-col flex-auto flex-shrink-0 items-center justify-center p-32')}>
@@ -59,7 +69,7 @@ function LoginPage() {
 								name="loginForm"
 								noValidate
 								className="flex flex-col justify-center w-full"
-								onSubmit={handleSubmit}
+								onSubmit={formik.handleSubmit}
 							>
 								<TextField
 									className="mb-16"
@@ -67,8 +77,10 @@ function LoginPage() {
 									autoFocus
 									type="email"
 									name="email"
-									value={form.email}
-									onChange={handleChange}
+									value={formik.values.email}
+									onChange={formik.handleChange}
+									error={formik.touched.email && Boolean(formik.errors.email)}
+									helperText={formik.touched.email && formik.errors.email}
 									variant="outlined"
 									required
 									fullWidth
@@ -79,8 +91,10 @@ function LoginPage() {
 									label="Password"
 									type="password"
 									name="password"
-									value={form.password}
-									onChange={handleChange}
+									value={formik.values.password}
+									onChange={formik.handleChange}
+									error={formik.touched.password && Boolean(formik.errors.password)}
+									helperText={formik.touched.password && formik.errors.password}
 									variant="outlined"
 									required
 									fullWidth
@@ -92,8 +106,8 @@ function LoginPage() {
 											control={
 												<Checkbox
 													name="remember"
-													checked={form.remember}
-													onChange={handleChange}
+													checked={formik.values.remember}
+													onChange={formik.handleChange}
 												/>
 											}
 											label="Remember Me"
@@ -110,7 +124,7 @@ function LoginPage() {
 									color="primary"
 									className="w-224 mx-auto mt-16"
 									aria-label="LOG IN"
-									// disabled={!isFormValid()}
+									disabled={!formik.isValid}
 									type="submit"
 								>
 									Login
