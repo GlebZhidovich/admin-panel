@@ -1,11 +1,8 @@
 import React from 'react';
+import { authRoles } from "../../auth";
 
 const PanelPageConfig = {
-	settings: {
-		layout: {
-			config: {}
-		}
-	},
+	auth: authRoles.admin,
 	routes: [
 		{
 			path: '/panel',

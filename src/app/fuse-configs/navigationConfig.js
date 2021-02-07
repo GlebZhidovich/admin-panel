@@ -22,6 +22,22 @@ const navigationConfig = [
 				type: 'item',
 				icon: 'whatshot',
 				url: '/example'
+			},
+			{
+				id: 'login-component',
+				title: 'Login',
+				translate: 'LOGIN',
+				type: 'item',
+				icon: 'whatshot',
+				url: '/login'
+			},
+			{
+				id: 'experts-component',
+				title: 'Experts',
+				translate: 'EXPERTS',
+				type: 'item',
+				icon: 'whatshot',
+				url: '/experts'
 			}
 		]
 	}

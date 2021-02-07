@@ -8,6 +8,7 @@ import FuseAnimateGroup from "../../../@fuse/core/FuseAnimateGroup/FuseAnimateGr
 import { ExpertsTab, ProfileTab, OperatorTab, PunktTab } from './tabs';
 import { CreateMap } from "./components/CreateMap/CreateMap";
 import { Statistics } from "./components/Statistics/Statistics";
+import Authorization from '../FuseAuthorization';
 
 const useStyles = makeStyles(theme => ({
     layout: {
