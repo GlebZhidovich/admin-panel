@@ -6,8 +6,8 @@ import { darken } from '@material-ui/core/styles/colorManipulator';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import JWTLoginTab from './tabs/JWTLoginTab';
-import { useSelector } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -64,12 +64,9 @@ function Login() {
 									</div>
 								</div>
 							</FuseAnimate>
-
 							<JWTLoginTab />
 						</CardContent>
 					</Card>
-
-
 				</div>
 			</FuseAnimate>
 		</div>

@@ -42,7 +42,7 @@ const rows = [
 		'Просмотр'
 	),
 	createData(
-		'1',
+		'2',
 		'Действующая',
 		'10.10.2021 10:00:00',
 		'101230012101694',
@@ -54,7 +54,7 @@ const rows = [
 		'Просмотр'
 	),
 	createData(
-		'1',
+		'3',
 		'Действующая',
 		'10.10.2021 10:00:00',
 		'101230012101694',
@@ -91,7 +91,7 @@ function Statistics() {
 	};
 
 	return (
-		<>
+		<div className="p-16">
 			<Grid container spacing={3}>
 				<Grid item>
 					<Typography variant="h4">Статистика</Typography>
@@ -175,8 +175,9 @@ function Statistics() {
 								</TableHead>
 								<TableBody>
 									{rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
+										console.log(row);
 										return (
-											<TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+											<TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
 												{columns.map(column => {
 													const value = row[column.id];
 													return (
@@ -205,7 +206,7 @@ function Statistics() {
 					</Paper>
 				</Grid>
 			</Grid>
-		</>
+		</div>
 	);
 }
 

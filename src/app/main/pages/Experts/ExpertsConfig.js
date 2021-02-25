@@ -1,4 +1,4 @@
-import Experts from "./Experts";
+import Experts from './Experts';
 
 const ExpertsConfig = {
 	settings: {
@@ -6,7 +6,7 @@ const ExpertsConfig = {
 			config: {
 				toolbar: {
 					display: false
-				},
+				}
 			}
 		}
 	},

@@ -1,11 +1,10 @@
-import axios from "axios";
-
-const proxy = 'https://cors-anywhere.herokuapp.com/';
+import axios from 'axios';
 
 export default axios.create({
-    baseURL: "http://185.49.68.101/api/",
-    responseType: "json",
-    proxy: {
-        host: proxy
-    }
+	// baseURL: "api",
+	// responseType: "json",
+	proxy: {
+		host: 'localhost/',
+		port: 3001
+	}
 });

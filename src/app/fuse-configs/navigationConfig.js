@@ -16,14 +16,6 @@ const navigationConfig = [
 		icon: 'apps',
 		children: [
 			{
-				id: 'example-component',
-				title: 'Example',
-				translate: 'EXAMPLE',
-				type: 'item',
-				icon: 'whatshot',
-				url: '/example'
-			},
-			{
 				id: 'login-component',
 				title: 'Login',
 				translate: 'LOGIN',
@@ -38,6 +30,22 @@ const navigationConfig = [
 				type: 'item',
 				icon: 'whatshot',
 				url: '/experts'
+			},
+			{
+				id: 'map-component',
+				title: 'Map',
+				translate: 'MAP',
+				type: 'item',
+				icon: 'whatshot',
+				url: '/map'
+			},
+			{
+				id: 'statistics-component',
+				title: 'Statistics',
+				translate: 'STATISTICS',
+				type: 'item',
+				icon: 'whatshot',
+				url: '/statistics'
 			}
 		]
 	}

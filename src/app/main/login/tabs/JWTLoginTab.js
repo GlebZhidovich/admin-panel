@@ -2,21 +2,19 @@ import Button from '@material-ui/core/Button';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { submitLogin } from 'app/auth/store/loginSlice';
-import { TextField } from "@material-ui/core";
-import { useFormik } from "formik";
-import * as yup from "yup";
+import { TextField } from '@material-ui/core';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import { useHistory } from "react-router";
 
 function JWTLoginTab(props) {
 	const dispatch = useDispatch();
 	// const login = useSelector(({ auth }) => auth.login);
+	const history = useHistory();
 
 	const validationSchema = yup.object({
-		email: yup
-			.string('Enter your email')
-			.required('Email is required'),
-		password: yup
-			.string('Enter your password')
-			.required('Password is required'),
+		email: yup.string('Enter your email').required('Email is required'),
+		password: yup.string('Enter your password').required('Password is required')
 	});
 
 	const formik = useFormik({
@@ -25,8 +23,8 @@ function JWTLoginTab(props) {
 			password: '1234qwer',
 			remember: false
 		},
-		validationSchema: validationSchema,
-		onSubmit: handleSubmit,
+		validationSchema,
+		onSubmit: handleSubmit
 	});
 
 	// const [isFormValid, setIsFormValid] = useState(false);
@@ -45,7 +43,8 @@ function JWTLoginTab(props) {
 	// }
 
 	function handleSubmit(model) {
-		dispatch(submitLogin(model));
+		history.push('/experts');
+		// dispatch(submitLogin(model));
 	}
 
 	return (
